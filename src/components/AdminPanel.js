@@ -81,23 +81,24 @@ function AdminPanel({ products, setProducts }) {
         )}
       </div>
 
-      <ul>
-        {products.map((p, idx) => (
-          <li key={p.id} data-testid={`admin-product-${p.id}`}>
-            <div className="row">
-              <h3>{p.name}</h3>
-              <p>${p.price}</p>
-            </div>
-
-            <button data-testid="edit-btn" onClick={() => handleEdit(p.id)}>
+      <div className="col-12">
+        {products.map((p, i) => (
+          <div key={p.id} className={`col-${i}`}>
+            <a>
+              <div className="row">
+                <h3>{p.name}</h3>
+                <p>${p.price}</p>
+              </div>
+            </a>
+            <button className="float-right" onClick={() => handleEdit(p.id)}>
               Edit
             </button>
-            <button data-testid="delete-btn" onClick={() => handleDelete(p.id)}>
+            <button className="float-right" onClick={() => handleDelete(p.id)}>
               Delete
             </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
