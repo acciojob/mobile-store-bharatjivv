@@ -84,8 +84,11 @@ function AdminPanel({ products, setProducts }) {
       <ul>
         {products.map((p, idx) => (
           <li key={p.id} data-testid={`admin-product-${p.id}`}>
-            <h3>{p.name}</h3>
-            <p>${p.price}</p>
+            <div className="row">
+              <h3>{p.name}</h3>
+              <p>${p.price}</p>
+            </div>
+
             <button data-testid="edit-btn" onClick={() => handleEdit(p.id)}>
               Edit
             </button>

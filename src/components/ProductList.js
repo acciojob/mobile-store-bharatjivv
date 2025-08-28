@@ -6,16 +6,25 @@ function ProductList({ products }) {
   return (
     <div>
       <h1>Mobile Store</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id} data-testid={`product-${product.id}`}>
-            <Link to={`/products/${product.id}`} data-testid="product-link">
-              <h3>{product.name}</h3>
-              <img src={product.image} alt={product.name} />
+      <div>
+
+
+      <div>
+      <h1>Mobile Store</h1>
+      <div className="col-12">
+        {products.map(product => (
+          <div key={product.id}>
+            <Link to={`/products/${product.id}`}>
+              <div className="row">
+                <h3>{product.name}</h3>
+                <img src={product.image} alt={product.name} />
+              </div>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+    </div>
+      </div>
     </div>
   );
 }
