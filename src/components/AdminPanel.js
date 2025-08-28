@@ -88,20 +88,27 @@ function AdminPanel({ products, setProducts }) {
         )}
       </div>
 
-      {products.map((p) => (
-        <div key={p.id}>
-          <div className="row">
-            <h3>{p.name}</h3>
-            <p>${p.price}</p>
+      <div className="col-12">
+        {products.map((p) => (
+          <div key={p.id}>
+            <a href={`/admin/products/${p.id}`}>
+              <div className="row">
+                <h3>{p.name}</h3>
+                <p>${p.price}</p>
+              </div>
+              <button className="float-right" onClick={() => handleEdit(p.id)}>
+                Edit
+              </button>
+              <button
+                className="float-right"
+                onClick={() => handleDelete(p.id)}
+              >
+                Delete
+              </button>
+            </a>
           </div>
-          <button className="float-right" onClick={() => handleEdit(p.id)}>
-            Edit
-          </button>
-          <button className="float-right" onClick={() => handleDelete(p.id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
