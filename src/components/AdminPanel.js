@@ -1,4 +1,3 @@
-// components/AdminPanel.js
 import React, { useState } from "react";
 
 function AdminPanel({ products, setProducts }) {
@@ -11,6 +10,10 @@ function AdminPanel({ products, setProducts }) {
   const [editId, setEditId] = useState(null);
 
   const handleAdd = () => {
+    if (!form.name || !form.price || !form.image) {
+      alert("Please fill in all fields!");
+      return;
+    }
     const newProduct = {
       ...form,
       id: Date.now(),
@@ -21,7 +24,9 @@ function AdminPanel({ products, setProducts }) {
   };
 
   const handleDelete = (id) => {
-    setProducts(products.filter((p) => p.id !== id));
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      setProducts(products.filter((p) => p.id !== id));
+    }
   };
 
   const handleEdit = (id) => {
@@ -31,6 +36,10 @@ function AdminPanel({ products, setProducts }) {
   };
 
   const handleUpdate = () => {
+    if (!form.name || !form.price || !form.image) {
+      alert("Please fill in all fields!");
+      return;
+    }
     setProducts(
       products.map((p) =>
         p.id === editId
@@ -44,8 +53,6 @@ function AdminPanel({ products, setProducts }) {
 
   return (
     <div>
-      <h1>Admin Panel</h1>
-
       <div>
         <input
           className="form-control"
@@ -81,24 +88,20 @@ function AdminPanel({ products, setProducts }) {
         )}
       </div>
 
-      <div>
-        {products.map((p) => (
-          <div key={p.id}>
-            <a>
-              <div className="row">
-                <h3>{p.name}</h3>
-                <p>${p.price}</p>
-              </div>
-            </a>
-            <button className="float-right" onClick={() => handleEdit(p.id)}>
-              Edit
-            </button>
-            <button className="float-right" onClick={() => handleDelete(p.id)}>
-              Delete
-            </button>
+      {products.map((p) => (
+        <div key={p.id}>
+          <div className="row">
+            <h3>{p.name}</h3>
+            <p>${p.price}</p>
           </div>
-        ))}
-      </div>
+          <button className="float-right" onClick={() => handleEdit(p.id)}>
+            Edit
+          </button>
+          <button className="float-right" onClick={() => handleDelete(p.id)}>
+            Delete
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
