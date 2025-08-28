@@ -82,8 +82,8 @@ function AdminPanel({ products, setProducts }) {
       </div>
 
       <div className="col-12">
-        {products.map((p, i) => (
-          <div key={p.id} className={`col-${i}`}>
+        {products.map((p) => (
+          <div key={p.id}>
             <a>
               <div className="row">
                 <h3>{p.name}</h3>
