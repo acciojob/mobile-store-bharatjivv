@@ -53,6 +53,7 @@ function AdminPanel({ products, setProducts }) {
 
   return (
     <div>
+      <div>
       <div className="col-12">
         {products.map((p) => (
           <div key={p.id}>
@@ -74,8 +75,7 @@ function AdminPanel({ products, setProducts }) {
           </div>
         ))}
       </div>
-
-       <div>
+      <div>
         <input
           className="form-control"
           placeholder="Name"
@@ -108,6 +108,8 @@ function AdminPanel({ products, setProducts }) {
         ) : (
           <button onClick={handleAdd}>Add</button>
         )}
+      </div>
+
       </div>
     </div>
   );

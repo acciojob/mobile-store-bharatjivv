@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" render={() => <ProductList products={products} />} />
         <Route path="/products/:id" render={(props) => <ProductDetails {...props} products={products} />} />
         <Route path="/admin" render={() => <AdminPanel products={products} setProducts={setProducts} />} />
-		<Route path="/admin/products/:id" render={(props) => <ProductDetails {...props} products={products} />} />
+		{/* <Route path="/admin/products/:id" render={(props) => <ProductDetails {...props} products={products} />} /> */}
       </Switch>
     </Router>
   );
