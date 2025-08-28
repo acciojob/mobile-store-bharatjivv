@@ -53,7 +53,29 @@ function AdminPanel({ products, setProducts }) {
 
   return (
     <div>
-      <div>
+      <div className="col-12">
+        {products.map((p) => (
+          <div key={p.id}>
+            <a href={`/admin/products/${p.id}`}>
+              <div className="row">
+                <h3>{p.name}</h3>
+                <p>${p.price}</p>
+              </div>
+              <button className="float-right" onClick={() => handleEdit(p.id)}>
+                Edit
+              </button>
+              <button
+                className="float-right"
+                onClick={() => handleDelete(p.id)}
+              >
+                Delete
+              </button>
+            </a>
+          </div>
+        ))}
+      </div>
+
+       <div>
         <input
           className="form-control"
           placeholder="Name"
@@ -86,28 +108,6 @@ function AdminPanel({ products, setProducts }) {
         ) : (
           <button onClick={handleAdd}>Add</button>
         )}
-      </div>
-
-      <div className="col-12">
-        {products.map((p) => (
-          <div key={p.id}>
-            <a href={`/admin/products/${p.id}`}>
-              <div className="row">
-                <h3>{p.name}</h3>
-                <p>${p.price}</p>
-              </div>
-              <button className="float-right" onClick={() => handleEdit(p.id)}>
-                Edit
-              </button>
-              <button
-                className="float-right"
-                onClick={() => handleDelete(p.id)}
-              >
-                Delete
-              </button>
-            </a>
-          </div>
-        ))}
       </div>
     </div>
   );
