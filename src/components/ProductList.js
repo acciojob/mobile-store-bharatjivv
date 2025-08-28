@@ -5,7 +5,7 @@ function ProductList({ products }) {
   return (
     <div>
       <h1>Mobile Store</h1>
-      <div>
+      <div className="col-12">
         {products.map((product) => (
           <div key={product.id} className="product-item" data-testid={`product-${product.id}`}>
             <Link to={`/products/${product.id}`}>
